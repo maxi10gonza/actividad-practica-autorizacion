@@ -44,7 +44,7 @@ export async function login(req, res) {
 
 export async function register(req, res){
   const {username, password} = req.body
-  const conexion = await newConnection()
+  const conexion = await connection()
   try {
     const nuevoUsuario = await conexion.query("INSERT INTO users (username, password) VALUES (?, ?)", [username, password])
     

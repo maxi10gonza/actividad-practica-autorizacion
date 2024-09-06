@@ -3,15 +3,13 @@ import express from 'express';
 import cookieParser from 'cookie-parser';
 import session from 'express-session';
 import cors from 'cors';
-
-import { PORT } from './config/env.js';
-import generarJwt from './helpers/generar-jwt.js';
-import validarJwt from './middlewares/validar-jwt.js';
-import { database } from './db/database.js';
 import morgan from 'morgan';
+import { PORT } from './src/config/config.js';
+import { sessionRoutes } from './src/routes/routes.js';
 
 
 const app = express();
+
 
 app.use(cors({
     origin: ['http://localhost:5500', 'http://localhost:3000', 'http://127.0.0.1:3000'],
