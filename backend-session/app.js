@@ -4,8 +4,8 @@ import express from 'express';
 import session from 'express-session';
 import morgan from 'morgan';
 import path from 'path';
+import { sessionRoutes } from './src/routes/routes.js';
 
-import { connection } from './src/database/db.js';
 
 const app = express();
 const PORT = process.env.PORT || 4000;
@@ -34,9 +34,6 @@ app.use(session({
         // sameSite: 'lax' // permite envío de cookies en navegadores modernos
     }
 }));
-
-
-
-
+app.use(sessionRoutes)
 
 app.listen(PORT, () => console.log(`Server running on http://localhost:${PORT}/`));
